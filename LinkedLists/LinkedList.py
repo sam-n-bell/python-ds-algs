@@ -31,6 +31,9 @@ class LinkedList(object):
         self._root = new_root
         self._length += 1
 
+    def append(self, val: int):
+        self.append_from_list([val])
+
     def append_from_list(self, vals: List):
         if len(vals) > 0:
             last_node = self.get_node_at_index(self._length - 1)
@@ -42,6 +45,20 @@ class LinkedList(object):
                 last_node.next = ListNode(val)
                 self._length += 1
                 last_node = last_node.next
+
+    def reverse(self):
+        if self._length > 1:
+            previous = None
+            current = self._root
+            next = None
+            # 2 -> 4 -> 6 to 2 <- 4 <- 6
+            while current is not None:
+                next = current.next
+                current.next = previous
+                previous = current
+                current = next
+            self._root = previous
+
 
     def get_node_at_index(self, index: int):
         if index >= self._length:
