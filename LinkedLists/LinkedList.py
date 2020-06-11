@@ -1,6 +1,6 @@
 from LinkedLists.IndexOutOfLinkedListBoundsError import IndexOutOFLinkedListBoundsError
 from LinkedLists.ListNode import ListNode
-
+from typing import List
 
 class LinkedList(object):
 
@@ -30,6 +30,18 @@ class LinkedList(object):
         new_root.next = old_root
         self._root = new_root
         self._length += 1
+
+    def append_from_list(self, vals: List):
+        if len(vals) > 0:
+            last_node = self.get_node_at_index(self._length - 1)
+            if last_node is None:
+                last_node = ListNode(vals.pop(0))
+                self._root = last_node
+                self._length += 1
+            for val in vals:
+                last_node.next = ListNode(val)
+                self._length += 1
+                last_node = last_node.next
 
     def get_node_at_index(self, index: int):
         if index >= self._length:
