@@ -2,6 +2,7 @@ from LinkedLists.IndexOutOfLinkedListBoundsError import IndexOutOFLinkedListBoun
 from LinkedLists.ListNode import ListNode
 from typing import List
 
+
 class LinkedList(object):
 
     def __init__(self):
@@ -46,6 +47,18 @@ class LinkedList(object):
                 self._length += 1
                 last_node = last_node.next
 
+    def insert_at_index(self, index: int, val: int):
+        if index == 0:
+            self.insert_at_head(val)
+        elif index == self._length:
+            self.append(val)
+        else:
+            prior_node = self.get_node_at_index(index - 1)
+            old_next = prior_node.next
+            new_node = ListNode(val)
+            new_node.next = old_next
+            prior_node.next = new_node
+
     def reverse(self):
         if self._length > 1:
             previous = None
@@ -58,7 +71,6 @@ class LinkedList(object):
                 previous = current
                 current = next
             self._root = previous
-
 
     def get_node_at_index(self, index: int):
         if index >= self._length:
