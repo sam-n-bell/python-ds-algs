@@ -1,6 +1,7 @@
 from BinarySearchTrees.TreeNode import TreeNode
 from typing import List
 
+
 class BinarySearchTree(object):
 
     def __init__(self):
@@ -56,3 +57,64 @@ class BinarySearchTree(object):
             return self.__find_lca(val1, val2, root.left)
         else:
             return root.val
+
+    def contains_subtree(self, subtree):
+        if not self._root or not subtree.root:
+            print("One of more tree are None")
+        else:
+            root = self._root
+            sub = subtree.root
+            if self.__contains_subtree(root, sub):
+                print('The main tree does contain a subtree like that one')
+            else:
+                print('That subtree does not exist in the main tree')
+
+    def __contains_subtree(self, root, sub) -> bool:
+        if root is None and sub is None:
+            return True
+        elif (root is None and sub is not None) or (root is not None and sub is None):
+            return False
+        elif root.val != sub.val:
+            return self.__contains_subtree(root.left, sub) or self.__contains_subtree(root.right, sub)
+        else:
+            # root.val == sub.val
+            return self.__contains_subtree(root.left, sub.left) and self.__contains_subtree(root.right, sub.right)
+
+    def print_inorder(self):
+        self._inorder = []
+        self.__inorder(self._root)
+        print(self._inorder)
+
+    def __inorder(self, root):
+        if root is not None:
+            if root.left:
+                self.__inorder(root.left)
+            self._inorder.append(root.val)
+            if root.right:
+                self.__inorder(root.right)
+
+    def print_postorder(self):
+        self._postorder = []
+        self.__postorder(self._root)
+        print(self._postorder)
+
+    def __postorder(self, root):
+        if root is not None:
+            if root.left:
+                self.__postorder(root.left)
+            if root.right:
+                self.__postorder(root.right)
+            self._postorder.append(root.val)
+
+    def print_preorder(self):
+        self._preorder = []
+        self.__preorder(self._root)
+        print(self._preorder)
+
+    def __preorder(self, root):
+        if root is not None:
+            self._preorder.append(root.val)
+            if root.left:
+                self.__preorder(root.left)
+            if root.right:
+                self.__preorder(root.right)
