@@ -51,7 +51,6 @@ class BinarySearchTree(object):
             return max(self.__height(root.left, cur_height + 1), self.__height(root.right, cur_height + 1))
 
     def reverse(self):
-        root = self._root
         self.__reverse(self._root.left, self._root.right)
         
     def __reverse(self, left, right):
