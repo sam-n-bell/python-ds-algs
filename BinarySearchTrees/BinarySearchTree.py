@@ -39,6 +39,29 @@ class BinarySearchTree(object):
     def create_nodes_from_list(self, vals: List):
         for val in vals:
             self.create_node(val)
+    
+    def print_tree_height(self):
+        levels = self.__height(self.root)
+        print(f'This tree goes at most {levels} levels down')
+
+    def __height(self, root: TreeNode, cur_height: int=0):
+        if not root:
+            return cur_height
+        else:
+            return max(self.__height(root.left, cur_height + 1), self.__height(root.right, cur_height + 1))
+
+    def reverse(self):
+        root = self._root
+        self.__reverse(self._root.left, self._root.right)
+        
+    def __reverse(self, left, right):
+        print(f'swaping {left.val} and {right.val}')
+        left, right = right, left
+        print(f'now {left.val} and {right.val}')
+        if left.left is not None or left.right is not None:
+            self.__reverse(left.left, left.right)
+        if right.left is not None or right.right is not None:
+            self.__reverse(right.left, right.right)
 
     def lowest_common_ancestor(self, val1: int, val2: int):
         root = self._root
