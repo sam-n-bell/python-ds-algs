@@ -123,7 +123,6 @@ class BinarySearchTree(object):
         root = self._root
         q = deque()
         q.append(root)
-        levels = list()
         while len(q) > 0:
             # while nodes in the queue
             cur_level = list()
@@ -136,7 +135,7 @@ class BinarySearchTree(object):
                 if node.right:
                     q.append(node.right)
                 cur_level.append(node.val)
-            levels.append(cur_level)
-        for level in levels:
-            print(level)
+            print(cur_level)
+        # for level in levels:
+            # print(level)
 
