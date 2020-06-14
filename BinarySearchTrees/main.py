@@ -1,5 +1,4 @@
-from BinarySearchTrees.BinarySearchTree import BinarySearchTree
-from BinarySearchTrees.TreeNode import TreeNode
+from BinarySearchTree import BinarySearchTree
 
 bst = BinarySearchTree()
 bst.create_nodes_from_list(vals=[10, 15, 8, 9, 7, 13, 17, 16, 19])
@@ -12,3 +11,4 @@ bst.contains_subtree(sub)
 bst.print_inorder()
 bst.print_postorder()
 bst.print_preorder()
+bst.print_breadth()

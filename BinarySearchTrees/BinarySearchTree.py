@@ -1,6 +1,6 @@
-from BinarySearchTrees.TreeNode import TreeNode
+from TreeNode import TreeNode
 from typing import List
-
+from collections import deque
 
 class BinarySearchTree(object):
 
@@ -118,3 +118,24 @@ class BinarySearchTree(object):
                 self.__preorder(root.left)
             if root.right:
                 self.__preorder(root.right)
+
+    def print_breadth(self):
+        root = self._root
+        q = deque()
+        q.append(root)
+        levels = list()
+        while len(q) > 0:
+            # while nodes in the queue
+            cur_level = list()
+            for i in range(len(q)):
+                # take from the left
+                node = q.popleft()
+                # check for children
+                if node.left:
+                    q.append(node.left)
+                if node.right:
+                    q.append(node.right)
+                cur_level.append(node.val)
+            levels.append(cur_level)
+        print(levels)
+
