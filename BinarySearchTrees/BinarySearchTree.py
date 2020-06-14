@@ -137,5 +137,6 @@ class BinarySearchTree(object):
                     q.append(node.right)
                 cur_level.append(node.val)
             levels.append(cur_level)
-        print(levels)
+        for level in levels:
+            print(level)
 
