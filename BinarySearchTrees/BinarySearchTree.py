@@ -65,10 +65,9 @@ class BinarySearchTree(object):
     def lowest_common_ancestor(self, val1: int, val2: int):
         root = self._root
         if not root:
-            print('The tree is empty')
+            return None
         else:
-            lca = self.__find_lca(val1, val2, root)
-            print(f'The lowest common ancestor for {val1} and {val2} is {lca}')
+            return self.__find_lca(val1, val2, root)
 
     def __find_lca(self, val1: int, val2: int, root: TreeNode):
         if not root:
@@ -82,14 +81,11 @@ class BinarySearchTree(object):
 
     def contains_subtree(self, subtree):
         if not self._root or not subtree.root:
-            print("One of more tree are None")
+            return False
         else:
             root = self._root
             sub = subtree.root
-            if self.__contains_subtree(root, sub):
-                print('The main tree does contain a subtree like that one')
-            else:
-                print('That subtree does not exist in the main tree')
+            return self.__contains_subtree(root, sub)
 
     def __contains_subtree(self, root, sub) -> bool:
         if root is None and sub is None:
