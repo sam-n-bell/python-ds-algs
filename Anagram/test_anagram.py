@@ -8,7 +8,7 @@ class TestAnagram(unittest.TestCase):
         self.assertTrue(anagram.are_anagrams('race', 'care'))
 
     def test_anagram_ignore_case(self):
-        self.assertTrue(anagram.are_anagrams('race', 'RACE'))
+        self.assertTrue(anagram.are_anagrams('race', 'CARE'))
 
     def test_anagram_negative_path(self):
         self.assertFalse(anagram.are_anagrams('sam', 'josh'))
