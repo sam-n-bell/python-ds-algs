@@ -12,8 +12,5 @@ def fib(n):
             sequences[n - 1] = fib(n - 1)
         return sequences.get(n - 2) + sequences.get(n - 1)
 
-n = 100
-print(f'The {n}(th) term of fib is {fib(n)}')
-
 
 
