@@ -51,12 +51,12 @@ class BinarySearchTree(object):
             return max(self.__height(root.left, cur_height + 1), self.__height(root.right, cur_height + 1))
 
     def reverse(self):
-        self.__reverse(self._root.left, self._root.right)
+        root = self._root
+        self.__reverse(root.left, root.right)
+        self._root = root
         
     def __reverse(self, left, right):
-        print(f'swaping {left.val} and {right.val}')
         left, right = right, left
-        print(f'now {left.val} and {right.val}')
         if left.left is not None or left.right is not None:
             self.__reverse(left.left, left.right)
         if right.left is not None or right.right is not None:
@@ -154,4 +154,4 @@ class BinarySearchTree(object):
                     q.append(node.right)
                 cur_level.append(node.val)
             print(cur_level)
-
+            
